@@ -1,4 +1,4 @@
-import { LuLayoutDashboard } from "react-icons/lu";
+import { LuLayoutDashboard, LuUser } from "react-icons/lu";
 
 const SideMenu = () => {
   return (
@@ -12,7 +12,7 @@ const SideMenu = () => {
         <div></div>
       </div>
       <div className="w-full h-[90%] border py-5">
-        <ul className="w-full">
+        <ul className="w-full"> 
           <li className="flex relative hover:bg-slate-50 px-5 h-[40px] transition-all  hover:text-green-600   w-full items-center cursor-pointer">
             <div className="w-full peer h-full flex  gap-3 items-center">
                 <div className="text-2xl"><LuLayoutDashboard /></div>
@@ -20,7 +20,13 @@ const SideMenu = () => {
             </div>
             <div className="peer-hover:bg-green-600 transition-all  left-0  bg-transparent absolute w-[4px] h-[30px] rounded-r-md"></div>
           </li>
-         
+          <li className="flex relative hover:bg-slate-50 px-5 h-[40px] transition-all  hover:text-green-600   w-full items-center cursor-pointer">
+            <div className="w-full peer h-full flex  gap-3 items-center">
+                <div className="text-2xl"><LuUser /></div>
+                <div className="font-bold">Admin</div>
+            </div>
+            <div className="peer-hover:bg-green-600 transition-all  left-0  bg-transparent absolute w-[4px] h-[30px] rounded-r-md"></div>
+          </li>
         </ul>
       </div>
     </div>

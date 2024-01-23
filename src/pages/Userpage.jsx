@@ -1,3 +1,4 @@
+import Admin from "../components/Admin";
 import Dashboard from "../components/Dashboard";
 import SideMenu from "../components/SideMenu";
 import TopMenu from "../components/TopMenu";
@@ -8,7 +9,7 @@ const Userpage = () => {
       <TopMenu/>
       <div className="w-full h-[90%] flex">
         <SideMenu />
-        <Dashboard />
+        <Admin/>
       </div>
     </div>
   );
