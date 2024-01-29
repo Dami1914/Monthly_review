@@ -1,14 +1,32 @@
 import { useEffect, useRef, useState } from 'react';
-import Table from './table/Table'
 import { FaExpand, FaFilter} from "react-icons/fa";
 import { IoMdContract } from "react-icons/io";
+import Table from '../table_component/Table';
 const PerfomanceTable = () => {
   const perfomanceRef = useRef({})
   const [expand,setExpand] = useState(false)
+  //not all table needs operation header, so i am using this to filter off operation on my table
+  const operation = false
 
   function handleExpand(){
     setExpand(prev=>!prev)
   }
+
+
+  const tableData = [
+    {
+     "MRKT ID": "001",
+      Market:"Mushin",
+      "Curr Month Trgt":1000000,
+      "Actual Daily RRT":30000,
+      "Avrg Daily RRT":2000,
+      "Actual Returns":500000,
+      MTD:300000,
+      Difference:-40000,
+      Percentage: "50%",
+      Status: "Poor"
+    }
+  ]
 
 useEffect(()=>{
   if(expand){
@@ -53,7 +71,7 @@ useEffect(()=>{
             </div>
           </div>
         </div>
-        <Table/>
+        <Table operation={operation} tableData={tableData}/>
       </div>
   )
 }

@@ -4,15 +4,22 @@ import { PiPasswordBold } from "react-icons/pi";
 import { GiEvilEyes } from "react-icons/gi";
 import { PiEyeSlashFill } from "react-icons/pi";
 import Logo from '../assets/Logo';
+import { useNavigate } from 'react-router-dom';
+
 
 const Login = () => {
     const passRef = useRef(null)
     const [seePass, setSeePass] = useState(false)
+    const navigate = useNavigate()
+
     const [userCredential,setUserCredential] = useState({
         username: "",
         password:""
     })
 
+    function handleLogin(){
+        navigate("/userpage")
+    }
     function handleChange(event){
         const {value,name} = event.target
         setUserCredential(prev=>{
@@ -60,7 +67,7 @@ const Login = () => {
                     </div>
                 </div>
                 <div className="w-full p-5 border-b border-t border-green-200 border-r rounded-b-lg rounded-t-lg">
-                    <button className='bg-green-600 hover:bg-white hover:text-green-600 hover:border hover:border-green-600 w-full rounded-lg p-2 text-white'>Login</button>
+                    <button onClick={handleLogin} className='bg-green-600 hover:bg-white hover:text-green-600 hover:border hover:border-green-600 w-full rounded-lg p-2 text-white'>Login</button>
                 </div>
             </form>
         </fieldset>

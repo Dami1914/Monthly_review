@@ -1,27 +1,35 @@
-import Userpage from "./pages/Userpage";
-import Loginpage from "./pages/Loginpage";
+
+
 import "./App.css";
 import {
   BrowserRouter as Router,
   Route,
-  Navigate,
   Routes,
+  Navigate,
+
 } from "react-router-dom";
-import { useState } from "react";
+
+
+import Loginpage
+ from "./pages/Loginpage";
+ import { useState } from "react";
+import Userpage from "./pages/Userpage";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   return (
-    <div className="w-screen h-screen bg-black">
+    <div className="w-screen h-screen">
       <Router>
         <Routes>
-          <Route index path="/" element={<Loginpage />} />
-          {isLoggedIn ? (
-            <Route path="/user" element={<Userpage />} />
-          ) : (
-            <Route path="/user" element={<Navigate to="/login" replace />} />
-          )}
+          <Route path="/" element={<Navigate to="/login"/>}/>
+          <Route path="/login" element={<Loginpage/>}/>
+          {
+            isLoggedIn?(
+              <Route path="/userpage/*" element={<Userpage/>}/>
+            ):(
+              <Route path="/login" element={<Loginpage/>}/> 
+            )
+          }      
         </Routes>
       </Router>
     </div>
