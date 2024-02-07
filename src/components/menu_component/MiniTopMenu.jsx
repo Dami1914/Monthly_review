@@ -1,14 +1,29 @@
 import { FaPlus } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 const MiniTopMenu = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const currentPath = location.pathname
+    .split("/")
+    .slice(location.pathname.split("/").length - 1)
+    .join("/");
+  function handleNavigate() {
+    navigate(`create${currentPath.slice(0,-1)}`);
+  }
   console.log(location.pathname.split("/").length - 1);
-  const valuesToCheckFor = ["dashboard", "operation"];
+  const valuesToCheckFor = [
+    "dashboard",
+    "operation",
+    "createuser",
+    "createbranch",
+    "createmarket",
+    "createmarketer",
+  ];
   return (
-    <div className="w-full h-[10%] flex border backdrop-filter backdrop-blur-3xl  ">
+    <div className="w-full sticky top-0 mt-0  h-[10%] flex border backdrop-filter backdrop-blur-lg  ">
       <div className="w-[70%] h-full flex gap-3 px-4 items-center">
         {location.pathname.split("/").map((ele, index) => {
           return (
@@ -36,14 +51,14 @@ const MiniTopMenu = () => {
         <div className="w-[30%] h-full px-10 flex justify-end items-center ">
           <div className="flex gap-3 w-full items-center justify-center">
             <div className="w-[30px] hover: border-slate-500 cursor-pointer text-slate-600 flex items-center justify-center h-[30px] border rounded-2xl">
-              <FaPlus />
+              <FaPlus onClick={handleNavigate} />
             </div>
             <div>
-              Click to add {''}
+              Click to add {""}
               {location.pathname
                 .split("/")
                 .slice(location.pathname.split("/").length - 1)
-                .join("/")}
+                .join("/").slice(0,-1)}
             </div>
           </div>
         </div>

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Table from "../../table_component/Table";
+import { Navigate, Route,Routes } from "react-router-dom";
+import CreateUser from "./CreateUser";
 
+import MiniTopMenu from "../../menu_component/MiniTopMenu";
 const User = () => {
   const [operation, setOperation] = useState(true);
 
@@ -16,8 +19,13 @@ const User = () => {
     },
   ];
   return (
-    <div className="w-[85%] h-full ">
-      <Table operation={operation} tableData={tableData} />
+    <div className="w-full h-full ">
+      <MiniTopMenu/>
+      <Routes>
+        <Route index element={<Navigate to='users' />}/>
+        <Route path='users' element={<Table operation={operation} tableData={tableData}/>}/>
+        <Route path='createuser' element={<CreateUser/>}/>
+      </Routes> 
     </div>
   );
 };

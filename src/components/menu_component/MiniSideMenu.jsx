@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 const MiniSideMenu = ({ data }) => {
   return (
-    <div className="w-[15%] border-r bg-white">
+    <div className="w-[15%] h-full border-r border-t bg-white">
       <ul className="w-full p-5 flex flex-col gap-3">
         {data.map((ele, index) => {
           return (

@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const SideMenu = () => {
   return (
-    <div className="bg-white w-1/6 h-full text-slate-600 ">
+    <div className="bg-white w-[14%] h-full text-slate-600 ">
       <div className="w-full h-[10%] gap-3 border flex justify-center items-center">
         <div className="w-[40px] h-[40px] border rounded-[50%]"></div>
         <div className="font-bold">

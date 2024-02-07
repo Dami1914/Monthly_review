@@ -14,7 +14,6 @@ const Userpage = () => {
       <div className="w-full h-[90%] flex">
           <SideMenu/>               
         <div className="w-[85%] flex flex-col">
-          <MiniTopMenu/>
         <Routes>
             <Route index element={<Navigate to="dashboard" />} />
             <Route path="dashboard/*" element={<Dashboard />} />

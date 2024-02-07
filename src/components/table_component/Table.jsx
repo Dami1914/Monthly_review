@@ -20,7 +20,9 @@ const Table = ({tableData,operation}) => {
         </thead>
         <tbody>
             {tableData.map((ele,index)=>{
-              return <TableRow operation={operation} key={index} elem={ele}/>
+              return (
+              <TableRow operation={operation} key={index} elem={ele}/>
+              )
             })}
         </tbody>
     </table>
