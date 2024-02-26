@@ -6,17 +6,13 @@ import { PiTrendDownBold, PiTrendDownThin } from "react-icons/pi";
 
 const TableRow = ({ elem, operation }) => {
   const tableRowRef = useRef([]);
-
-  
-
   useEffect(() => {
     tableRowRef.current.forEach((ele) => {
       if(ele.innerText.length > 15){
         ele.classList.add("tooltip");
       }
-      console.log(ele.innerText);
     });
-  });
+  },[]);
   return (
     <tr className="font-bold hover:bg-green-50 hover:text-green-800">
       {Object.values(elem).map((ele, index) => {

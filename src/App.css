@@ -1,24 +1,29 @@
-:root{
+:root {
     --tooltips: "";
 }
-.expand{
+
+.expand {
     position: absolute;
     width: 100vw;
     height: 100vh;
     top: 0px;
     left: 0px;
+    z-index: 3;
 }
-.active~div{
+
+.active~div {
     background-color: green;
 }
-.active{
+
+.active {
     color: green;
 }
 
 .tooltip::before {
     content: var(--tooltips);
     position: absolute;
-    bottom: calc(100% + 5px); /* Adjust as needed */
+    bottom: calc(100% + 5px);
+    /* Adjust as needed */
     left: 50%;
     transform: translateX(-50%);
     background-color: white;
@@ -33,4 +38,9 @@
 
 .tooltip:hover::before {
     opacity: 1;
-  }
+}
+
+.changeModeStyle{
+    position: absolute;
+    transform: translateX(calc(100%/20px));
+}

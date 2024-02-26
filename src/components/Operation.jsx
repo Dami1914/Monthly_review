@@ -3,6 +3,8 @@ import MiniSideMenu from "./menu_component/MiniSideMenu";
 import Table from "./table_component/Table";
 import * as XLSX from "xlsx";
 import MiniTopMenu from "./menu_component/MiniTopMenu";
+import { Routes, Route,Navigate } from "react-router-dom";
+import Loan from "./Loan";
 
 const Operation = () => {
   const uploadedRef = useRef({});

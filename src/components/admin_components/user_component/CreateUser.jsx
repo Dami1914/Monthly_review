@@ -1,56 +1,17 @@
 import React, { useState } from "react";
+import { HandleSubmitDataContext } from "../../../context/dataSubmitContext";
 
 const CreateUser = () => {
+  const {handleChange,handleImageUpload} = HandleSubmitDataContext()
   const [imageUrl, setImageUrl] = useState(null);
-  const [userData, setUserData] = useState({
-    firstname: "",
-    lastname: "",
-    dob: "",
-    gender: "",
-    contact:"",
-    email: "",
-    address: "",
-    position: "",
-    branch: "",
-    image: imageUrl,
-  });
+  const [userData, setUserData] = useState({});
 
-  function handleChange(event){
-      const {name,value} = event.target
-      setUserData((prev)=>{
-          return {...prev,[name]:value}
-      })
-  }
- function handleFormCancellation(event){
-  event.preventDefault()
-  setUserData({
-    firstname: "",
-    lastname: "",
-    dob: "",
-    gender: "",
-    email: "",
-    address: "",
-    position: "",
-    branch: "",
-    image: "",
-    contact:""
-  })
- }
 
-  function handleImageUpload(event) {
-    event.preventDefault();
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.onload = () => {
-      setImageUrl(reader.result);
-      console.log(reader.result);
-    };
-    reader.readAsDataURL(file);
-  }
+ 
   return (
-    <div className="w-full  flex items-center justify-center p-[2rem]">
+    <div className="w-full  flex items-center justify-center p-[2rem] text-sm">
       <fieldset className="w-full bg-white border h-full flex flex-col gap-5 rounded-xl">
-        <legend className="ml-5 font-bold text-lg">Create User</legend>
+        <legend className="ml-5 mb-4 font-bold text-lg">Create User</legend>
         <form className="w-full h-full flex flex-col gap-6 p-4">
           <div className="w-full rounded-xl bg-green-600 h-[5px]"></div>
           <section className="w-full justify-center items-center flex-col gap-4 flex p-4">
@@ -70,57 +31,57 @@ const CreateUser = () => {
                 Upload Image
               </label>
               <input
-                onChange={handleImageUpload}
+                onChange={(event)=>handleImageUpload(event,setImageUrl)}
                 type="file"
                 accept="image/*"
                 className="border rounded"
-                value=""
               />
             </div>
           </section>
-          <section className="w-full p-5 border justify-center flex rounded">
-            <div className="w-full flex  gap-4">
+          <section className="w-full p-2 border justify-center gap-3 flex rounded">
+            <div className="w-full flex  gap-4 items-center">
               <label htmlFor="">FirstName </label>
               <input
                 type="text"
-                placeholder="firstname"
-                className="w-[80%] outline-green-400 h-[30px] rounded  border indent-4"
-                value={userData.firstname}
-                name="firstname"
-                onChange={handleChange}
+                placeholder="First Name"
+                className="w-[80%]"
+                value={userData["Frst Name"]}
+                name="First Name"
+                onChange={(event)=>handleChange(event,setUserData)}
               />
             </div>
-            <div className="w-full flex gap-4">
+            <div className="w-full items-center flex gap-4">
               <label htmlFor="">LastName</label>
               <input
                 type="text"
-                placeholder="lastname"
-                className="w-[80%] outline-green-400 h-[30px] rounded  border indent-4"
-                value={userData.lastname}
-                name="lastname"
-                onChange={handleChange}
+                placeholder="Last Name"
+                className="w-[80%]"
+                value={userData["Last Name"]}
+                name="Last Name"
+                onChange={(event)=>handleChange(event,setUserData)}
               />
             </div>
           </section>
-          <section className="w-full flex border rounded flex-col ">
+          <section className="w-full flex border rounded flex-col py-3 ">
             <div className="w-full flex ">
               <div className="w-full flex gap-4 p-4  items-center">
                 <label htmlFor="">DOB</label>
                 <input
                   type="date"
-                  className="border outline-green-400 h-[30px] rounded"
-                  value={userData.dob}
-                  name="dob"
-                  onChange={handleChange}
+                  className=""
+                  value={userData.DOB}
+                  name="DOB"
+                  onChange={(event)=>handleChange(event,setUserData)}
+                  placeholder="DOB"
                 />
               </div>
               <div className="w-full flex gap-4 p-4 items-center">
                 <label htmlFor="">Gender</label>
                 <select
-                  name="gender"
-                  className="border outline-green-400  px-2 h-[30px] rounded"
-                  value={userData.gender}
-                  onChange={handleChange}
+                  name="Gender"
+                  className=""
+                  value={userData.Gender}
+                  onChange={(event)=>handleChange(event,setUserData)}
                 >
                   <option value="">--Choose Gender--</option>
                   <option value="male">Male</option>
@@ -128,16 +89,15 @@ const CreateUser = () => {
                 </select>
               </div>
               <div className="w-full flex gap-4 p-4 items-center">
-                <label htmlFor="">Email</label>
-                <input
-                  type="email"
-                  className="border w-[85%] outline-green-400  h-[30px] rounded indent-3"
-                  placeholder="email"
-                  value={userData.email}
-                  name="email"
-                  onChange={handleChange}
-                />
+                <label htmlFor="">Position</label>
+              <select name="Position" id="position" className="gap-4">
+                <option value="">--Choose Position--</option>
+                <option value="IT">IT</option>
+                <option value="IT">Teller</option>
+                <option value="Loan Officer">Loan Officer</option>
+              </select>
               </div>
+              
             </div>
             <div className="w-full flex p-4 gap-4">
               <div className="w-full rounded gap-3 flex">
@@ -146,9 +106,9 @@ const CreateUser = () => {
                   type="tel"
                   className="w-full outline-green-400  indent-3 border"
                   placeholder="Contact"
-                  name="contact"
-                  value={userData.contact}
-                  onChange={handleChange}
+                  name="Contact"
+                  value={userData.Contact}
+                  onChange={(event)=>handleChange(event,setUserData)}
                 />
               </div>
               <div className="w-full rounded gap-3 flex">
@@ -157,42 +117,42 @@ const CreateUser = () => {
                   type="text"
                   className="border outline-green-400  indent-3 w-full"
                   placeholder="Address"
-                  value={userData.address}
-                  onChange={handleChange}
-                  name="address"
+                  value={userData.Address}
+                  onChange={(event)=>handleChange(event,setUserData)}
+                  name="Address"
                 />
               </div>
             </div>
-            <div className="flex p-4 gap-3">
-              <div className="w-full rounded gap-3 flex">
-                <label htmlFor="">Branch</label>
+            <div className="flex h-[30px] gap-3 items-centerjustify-center px-4">
+              <div className="w-full justify-around items-center rounded gap-3 flex">
+                <label htmlFor="" className="">Branch</label>
                 <input
                   type="text"
-                  className=" outline-green-400  border w-full indent-3"
+                  className=" w-full "
                   placeholder="Branch"
-                  value={userData.branch}
-                  name="branch"
-                  onChange={handleChange}
+                  value={userData.Branch}
+                  name="Branch"
+                  onChange={(event)=>handleChange(event,setUserData)}
                 />
               </div>
-              <div className="w-full rounded gap-3 flex">
-                <label htmlFor="">Position</label>
+              <div className="w-full flex gap-4 items-center">
+                <label htmlFor="">Email</label>
                 <input
-                  type="text"
-                  className="border outline-green-400  w-full indent-3"
-                  placeholder="Position"
-                  name="position"
-                  value={userData.position}
-                  onChange={handleChange}
+                  type="email"
+                  className="border w-full"
+                  placeholder="Email"
+                  value={userData.Email}
+                  name="Email"
+                  onChange={(event)=>handleChange(event,setUserData)}
                 />
               </div>
             </div>
           </section>
-          <section className="w-full flex gap-4">
-            <button className="p-2 bg-green-400 text-green-800 rounded font-bold">
+          <section className="w-full items-center flex gap-4">
+            <button className="btn1">
               Submit
             </button>
-            <button onClick={handleFormCancellation} className="p-2 bg-red-400 text-red-800 rounded font-bold">
+            <button className="btn2">
               Cancel
             </button>
           </section>

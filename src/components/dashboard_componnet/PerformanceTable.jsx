@@ -17,6 +17,7 @@ const PerfomanceTable = () => {
     {
      "MRKT ID": "001",
       Market:"Mushin",
+      Markerter:"Ego Nwabali",
       "Curr Month Trgt":1000000,
       "Actual Daily RRT":30000,
       "Avrg Daily RRT":2000,
@@ -67,7 +68,7 @@ useEffect(()=>{
                   expand? <IoMdContract className='text-lg' onClick={handleExpand}/>: <FaExpand onClick={handleExpand}/>
                  }
               </div>
-              <div className='transition-all absolute peer-hover:text-slate-700 peer-hover:bg-white peer-hover:flex -top-20 -left-10 text-transparent p-2 rounded-xl drop-shadow-xl '>click to expand</div>
+              <div className='transition-all absolute peer-hover:text-slate-700 peer-hover:bg-white peer-hover:flex top-15 -left-20 text-transparent p-2 rounded-xl drop-shadow-xl '>click to expand</div>
             </div>
           </div>
         </div>

@@ -4,7 +4,7 @@ import TableRow from './TableRow'
 
 const Table = ({tableData,operation}) => {
   return (
-    <table className="w-full bg-white text-slate-600">
+    <table className="w-full bg-white text-slate-600 text-sm">
         <thead className="border-b">
         <tr>
             {tableData.map((ele)=>{

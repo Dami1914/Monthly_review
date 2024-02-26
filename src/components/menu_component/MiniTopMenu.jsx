@@ -2,17 +2,23 @@ import { FaPlus } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 const MiniTopMenu = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  
+
   const currentPath = location.pathname
     .split("/")
-    .slice(location.pathname.split("/").length - 1)
+    .slice(location.pathname.split("/").length-1)
     .join("/");
   function handleNavigate() {
-    navigate(`create${currentPath.slice(0,-1)}`);
+    //this stores the current location i.e admin,loan, and so on
+    const currentLocation = location.pathname.split("/").slice(location.pathname.split("/").length-2,-1).join("/")
+    navigate(`${currentLocation}/create${currentPath}`);
   }
+ 
   console.log(location.pathname.split("/").length - 1);
   const valuesToCheckFor = [
     "dashboard",
@@ -23,12 +29,18 @@ const MiniTopMenu = () => {
     "createmarketer",
   ];
   return (
-    <div className="w-full sticky top-0 mt-0  h-[10%] flex border backdrop-filter backdrop-blur-lg  ">
+    <div className="w-full  h-full flex border-b  ">
       <div className="w-[70%] h-full flex gap-3 px-4 items-center">
         {location.pathname.split("/").map((ele, index) => {
           return (
             <NavLink
               key={`${ele} ${index}`}
+              //sets to to their the respective paths by using the location.pathname property
+              //this splits the location.pathname strings thereby returning an array representation
+              //the slice function reduced the array content based on the arguement passed to it 
+              //in this case the first arguement "1" removes the space that was also stored in the
+              //in the process of spliting the array, while the "index+1" simply removes any other element
+              //right after the targeted endpoint so as to return something like this "userpage/{endpoint}"
               to={`/${location.pathname
                 .split("/")
                 .slice(1, index + 1)
@@ -41,7 +53,8 @@ const MiniTopMenu = () => {
               </div>
             </NavLink>
           );
-        })}
+          //removes the first element in the array that's "userpage" in this case
+        }).splice(2)}
       </div>
       {valuesToCheckFor.some((ele) => {
         return location.pathname.split("/").includes(ele);
@@ -54,11 +67,15 @@ const MiniTopMenu = () => {
               <FaPlus onClick={handleNavigate} />
             </div>
             <div>
+              
               Click to add {""}
-              {location.pathname
+              {
+              //the returned value here is dynamically concatenated to "Click to add"
+              location.pathname
                 .split("/")
-                .slice(location.pathname.split("/").length - 1)
-                .join("/").slice(0,-1)}
+                //dynamically return only the last element in the array to be concatenated to "click to add"
+                .slice(location.pathname.split("/").length-1)
+                .join("/")}
             </div>
           </div>
         </div>

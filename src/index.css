@@ -2,3 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+.btn1{
+    @apply  bg-green-400 text-green-800;
+}
+.btn2{
+    @apply  bg-red-400  text-red-800 ;
+}
+button{
+    @apply p-1 rounded px-2 text-sm font-bold;
+}
+input{
+    @apply  rounded flex items-center border px-1 h-[1.6rem] indent-2 outline-green-400;
+}
+select{
+    @apply rounded flex border items-center px-2 p-[.5px]  outline-green-400;
+}
+.btn2:hover{
+    @apply text-red-400 bg-red-800
+}
+.btn1:hover{
+    @apply text-green-400 bg-green-800
+}
+button{
+    transition-property: background-color color;
+    transition: .5s ease-in-out ;
+}
