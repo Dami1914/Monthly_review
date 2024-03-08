@@ -20,6 +20,8 @@ const MiniTopMenu = () => {
   }
  
   console.log(location.pathname.split("/").length - 1);
+  //values to check for is used to stop the rendering of click to add button
+  // so each page will not have the click to add button
   const valuesToCheckFor = [
     "dashboard",
     "operation",
@@ -27,9 +29,11 @@ const MiniTopMenu = () => {
     "createbranch",
     "createmarket",
     "createmarketer",
+    "loandetails",
+    "createloans"
   ];
   return (
-    <div className="w-full  h-full flex border-b  ">
+    <div className="w-full  h-full flex border-b dark:border-b-slate-600 ">
       <div className="w-[70%] h-full flex gap-3 px-4 items-center">
         {location.pathname.split("/").map((ele, index) => {
           return (
@@ -45,7 +49,7 @@ const MiniTopMenu = () => {
                 .split("/")
                 .slice(1, index + 1)
                 .join("/")}`}
-              className="flex hover:text-slate-800 text-slate-500 cursor-pointer items-center gap-3"
+              className="flex hover:text-slate-800 text-slate-500 dark:text-slate-400  cursor-pointer items-center gap-3"
             >
               <div>{ele}</div>
               <div>

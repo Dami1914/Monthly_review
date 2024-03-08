@@ -4,15 +4,15 @@ import TableRow from './TableRow'
 
 const Table = ({tableData,operation}) => {
   return (
-    <table className="w-full bg-white text-slate-600 text-sm">
-        <thead className="border-b">
+    <table style={{'--current-color-':"#1f1b24"}} className="w-full dark:bg-darkmode-1 dark:border-0 dark:text-darkmode-dark bg-white text-slate-600 text-sm">
+        <thead className="border-b dark:border-b-slate-600 dark:border-darkmode-1">
         <tr>
             {tableData.map((ele)=>{
               return <TableHead key={ele} elem={ele}/>
             })}
             {
               operation?
-               <th className="text-slate-500 font-normal p-2">Operation</th>
+               <th className="font-normal p-2">Operation</th>
                :""
             }
            

@@ -3,6 +3,8 @@ import MiniSideMenu from './menu_component/MiniSideMenu'
 import MiniTopMenu from './menu_component/MiniTopMenu'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Loans from './loan_component/Loans'
+import LoanDetails from './loan_component/LoanDetails'
+import CreateLoan from './loan_component/CreateLoan'
 
 const Loan = () => {
     const data = [
@@ -15,6 +17,8 @@ const Loan = () => {
             <Routes>
                 <Route index element={<Navigate to="loans"/>}/>
                 <Route path="loans" element={<Loans/>}/>
+                <Route path="createloans" element={<CreateLoan/>}/>
+                <Route path='loans/loandetails' element={<LoanDetails/>}/>
             </Routes>
         </div>
     </div>

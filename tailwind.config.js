@@ -4,8 +4,31 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor:{
+        darkmode:{
+          1: 'var(--bg-color1-dark)',
+          2: 'var(--bg-color2-dark)'
+        },
+        lightmode:{
+          1:'var(--bg-color1-light)',
+          2:'var(--bg-color2-light)'
+        }
+      },
+      color:{
+       "colorborder": 'var(--bg-color2-dark)'
+      },
+      textColor:{
+        darkmode:{
+          dark: 'var(--text-color-dark)',
+        },                                                                                                                                                                                                                                                                                                                                              
+        lightmode:{
+          light:'var(--text-color-light)',
+        }
+      }
+    },
   },
   plugins: [require('tailwind-scrollbar-hide')],
 }

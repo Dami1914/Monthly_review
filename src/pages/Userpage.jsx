@@ -6,31 +6,44 @@ import SideMenu from "../components/menu_component/SideMenu";
 import TopMenu from "../components/menu_component/TopMenu";
 import Loan from "../components/Loan";
 import MiniTopMenu from "../components/menu_component/MiniTopMenu";
+import { useEffect, useRef } from "react";
+import { HandleLayoutDesign } from "../context/layoutDesignContext";
 
 const Userpage = () => {
+  const pageRef = useRef({})
   const location = useLocation();
-
+  const {mode} = HandleLayoutDesign()
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+  useEffect(()=>{
+    if(mode){
+      pageRef.current.classList.add('dark')
+    }else{
+      pageRef.current.classList.remove('dark')
+    }
+  },[mode])
   return (
-    <div className="w-full  h-full bg-slate-100 text-sm">
-      <TopMenu />
-      <div className="w-full h-[90%] flex gap-3 ">
-        <SideMenu />
-        <div className="w-[85%] drop-shadow-xl bg-slate-50 h-full flex flex-col rounded-xl overflow-hidden">
-          {location.pathname.split("/").includes("dashboard") ? (
-            ""
-          ) : (
-            <div className="h-[10%]">
-              <MiniTopMenu />
+    <div ref={pageRef} className=" w-full  h-full">
+      <div className="w-full  dark:text-slate-400 text-lightmode-light bg-lightmode-2 dark:bg-darkmode-1  h-full text-sm">
+        <TopMenu />
+        <div className="w-full h-[90%] flex gap-3 ">
+          <SideMenu />
+          <div className="w-[85%]  drop-shadow-xl h-full flex flex-col rounded-xl overflow-hidden">
+            {location.pathname.split("/").includes("dashboard") ? (
+              ""
+            ) : (
+              <div className="h-[10%]">
+                <MiniTopMenu />
+             </div>
+            )}
+            <div className="w-full h-full">
+              <Routes>
+                <Route index element={<Navigate to="dashboard" />} />
+                <Route path="dashboard/*" element={<Dashboard />} />
+                <Route path="admin/*" element={<Admin />} />
+                <Route path="loan/*" element={<Loan />} />
+                <Route path="operation/*" element={<Operation />} />
+              </Routes>
             </div>
-          )}
-          <div className="w-full h-full">
-            <Routes>
-              <Route index element={<Navigate to="dashboard" />} />
-              <Route path="dashboard/*" element={<Dashboard />} />
-              <Route path="admin/*" element={<Admin />} />
-              <Route path="loan/*" element={<Loan />} />
-              <Route path="operation/*" element={<Operation />} />
-            </Routes>
           </div>
         </div>
       </div>

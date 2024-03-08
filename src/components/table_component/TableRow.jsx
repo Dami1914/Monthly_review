@@ -2,9 +2,24 @@ import React, { useEffect } from "react";
 import { useRef } from "react";
 import { FaArrowAltCircleDown, FaChevronDown, FaCross, FaWindowClose } from "react-icons/fa";
 import { PiTrendDownBold, PiTrendDownThin } from "react-icons/pi";
-
+import { useLocation, useNavigate } from "react-router-dom";
+import { GeneralStateData } from "../../context/generalStateContext";
 
 const TableRow = ({ elem, operation }) => {
+  const navigate = useNavigate()
+  const {pathname} = useLocation()
+  const {currentLoanCustomer, setCurrentLoanCustomer} = GeneralStateData()
+
+  function navigateToLoanDetails(event){
+    const {children} = event.target
+    console.log(event.target)
+    if(pathname.includes('loan')){
+      navigate('loandetails')
+      setCurrentLoanCustomer(elem)
+    }
+    
+  }
+
   const tableRowRef = useRef([]);
   useEffect(() => {
     tableRowRef.current.forEach((ele) => {
@@ -14,7 +29,7 @@ const TableRow = ({ elem, operation }) => {
     });
   },[]);
   return (
-    <tr className="font-bold hover:bg-green-50 hover:text-green-800">
+    <tr onClick={(event)=>navigateToLoanDetails(event)} className="font-bold cursor-pointer dark:text-slate-400 dark:hover:bg-darkmode-2 dark:hover:text-slate-300 hover:bg-green-50 hover:text-green-800">
       {Object.values(elem).map((ele, index) => {
         return Object.keys(elem).indexOf("Status") === index ? (
           <td className="text-center p-2" key={index + 1 * 2}>

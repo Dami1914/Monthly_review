@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .btn1{
     @apply  bg-green-400 text-green-800;
 }
@@ -12,10 +13,10 @@ button{
     @apply p-1 rounded px-2 text-sm font-bold;
 }
 input{
-    @apply  rounded flex items-center border px-1 h-[1.6rem] indent-2 outline-green-400;
+    @apply dark:bg-darkmode-2 accent-slate-600 dark:border-slate-600 rounded flex items-center border px-1 h-[1.9rem] indent-2 outline-green-400;
 }
 select{
-    @apply rounded flex border items-center px-2 p-[.5px]  outline-green-400;
+    @apply rounded flex dark:bg-darkmode-2 dark:border-slate-600 border items-center px-2 p-[.5px]  outline-green-400;
 }
 .btn2:hover{
     @apply text-red-400 bg-red-800
@@ -23,7 +24,63 @@ select{
 .btn1:hover{
     @apply text-green-400 bg-green-800
 }
+label{
+    @apply dark:text-slate-400
+}
+fieldset{
+    @apply dark:bg-darkmode-2 dark:border-slate-600
+}
 button{
     transition-property: background-color color;
     transition: .5s ease-in-out ;
+}
+
+section{
+    @apply dark:border-slate-600
+}
+legend{
+    @apply dark:text-slate-200
+}
+
+
+@layer base{
+    :root{
+        --bg-color1-dark: #121212;
+        --bg-color2-dark: #1f1b24;
+        --bg-color1-light: #F8FAFC;
+        --bg-color2-light: #F1F5F9;
+        --text-color-dark: #ced4da;
+        --text-color-light: #475569;
+        --current-color: "";
+    }
+}
+
+#moon{
+    transition: 0.9s cubic-bezier(0.99, 1.56, 0.64, 1);
+    transition-property: transform opacity display;
+}
+#sun{
+    transition: 0.9s cubic-bezier(0.99, 1.56, 0.64, 1);
+    transition-property: transform opacity display;
+}
+.changeMoon{
+    transform: translateX(10px) rotate(360deg);
+    opacity: 1;
+}
+.changeSun{
+    transform: translateX(50px) rotate(360deg);
+    opacity: 0;
+}
+.dashboard{
+    transition-property: width opacity transform;
+    transition-duration: 0.8s;
+    transition-timing-function: cubic-bezier(0.99, 1.56, 0.64, 1);
+}
+.activeDashboard{
+    transform: translateX(0px);
+    opacity: 1;
+}
+.activeDashboardButton{
+    color: red;
+    border:1px solid var(--text-color-light);
 }

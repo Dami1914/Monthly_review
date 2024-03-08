@@ -12,7 +12,7 @@ const CreateMarket = () => {
         <legend className=" font-bold mb-4 ml-4 text-lg">Create Market</legend>
         <form className="w-full p-3 flex flex-col gap-5">
           <div className="w-full mb-5 rounded-xl bg-green-600 h-[5px]"></div>
-          <section className="w-full flex flex-col gap-8 bg-white justify-between p-4 rounded border">
+          <section className="w-full flex flex-col rounded-xl gap-8 dark:bg-darkmode-1 dark:border-slate-600 bg-white justify-between p-4 rounded border">
             <div className="flex gap-4">
               <label htmlFor="">Market Name</label>
               <input name="Name" value={marketData.Name} onChange={(event)=>{handleChange(event,setMarketData)}} type="text" className="border rounded   outline-green-600 "  />
@@ -37,7 +37,7 @@ const CreateMarket = () => {
               </select>
             </div>
           </section>
-          <section className="flex gap-3 border rounded p-2 font-bold">
+          <section className="flex  gap-3 border rounded p-2 font-bold">
             <button className="p-2 rounded bg-green-400 text-green-800">Submit</button>
             <button className="p-2 rounded bg-red-400 text-red-800">Cancel</button>
           </section>

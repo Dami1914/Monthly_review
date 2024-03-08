@@ -3,22 +3,21 @@ import { HandleSubmitDataContext } from "../../../context/dataSubmitContext";
 
 const CreateUser = () => {
   const {handleChange,handleImageUpload} = HandleSubmitDataContext()
-  const [imageUrl, setImageUrl] = useState(null);
   const [userData, setUserData] = useState({});
 
 
  
   return (
-    <div className="w-full  flex items-center justify-center p-[2rem] text-sm">
-      <fieldset className="w-full bg-white border h-full flex flex-col gap-5 rounded-xl">
+    <div className="w-full dark:bg-darkmode-2  flex items-center justify-center p-[2rem] text-sm">
+      <fieldset className="w-full dark:text-slate-500 dark:bg-darkmode-1 dark:border-slate-600 bg-white border h-full flex flex-col gap-5 rounded-xl">
         <legend className="ml-5 mb-4 font-bold text-lg">Create User</legend>
         <form className="w-full h-full flex flex-col gap-6 p-4">
           <div className="w-full rounded-xl bg-green-600 h-[5px]"></div>
           <section className="w-full justify-center items-center flex-col gap-4 flex p-4">
-            <div className="w-[200px] h-[200px] border border-green-500 p-1 rounded-[50%] overflow-hidden flex justify-center items-center ">
-              {imageUrl ? (
+            <div className="w-[11em] h-[11em] dark:border-slate-600 border border-green-500 p-1 rounded-[50%] overflow-hidden flex justify-center items-center ">
+              {userData?.imageUrl ? (
                 <img
-                  src={imageUrl}
+                  src={userData?.imageUrl}
                   className="w-full h-full rounded-[50%]"
                   alt="user image"
                 />
@@ -31,14 +30,14 @@ const CreateUser = () => {
                 Upload Image
               </label>
               <input
-                onChange={(event)=>handleImageUpload(event,setImageUrl)}
+                onChange={(event)=>handleImageUpload(event,setUserData)}
                 type="file"
                 accept="image/*"
-                className="border rounded"
+                className="border rounded accent-slate-600"
               />
             </div>
           </section>
-          <section className="w-full p-2 border justify-center gap-3 flex rounded">
+          <section className="w-full p-2 border dark:border-slate-600 justify-center gap-3 flex rounded">
             <div className="w-full flex  gap-4 items-center">
               <label htmlFor="">FirstName </label>
               <input
@@ -62,7 +61,7 @@ const CreateUser = () => {
               />
             </div>
           </section>
-          <section className="w-full flex border rounded flex-col py-3 ">
+          <section className="w-full flex border dark:bg-darkmode-2 dark:border-slate-600 rounded flex-col py-3 ">
             <div className="w-full flex ">
               <div className="w-full flex gap-4 p-4  items-center">
                 <label htmlFor="">DOB</label>
@@ -99,7 +98,7 @@ const CreateUser = () => {
               </div>
               
             </div>
-            <div className="w-full flex p-4 gap-4">
+            <div className="w-full flex p-4 gap-4 ">
               <div className="w-full rounded gap-3 flex">
                 <label htmlFor="">Contact</label>
                 <input
@@ -123,7 +122,7 @@ const CreateUser = () => {
                 />
               </div>
             </div>
-            <div className="flex h-[30px] gap-3 items-centerjustify-center px-4">
+            <div className="flex h-[30px]  gap-3 items-center justify-center px-4">
               <div className="w-full justify-around items-center rounded gap-3 flex">
                 <label htmlFor="" className="">Branch</label>
                 <input

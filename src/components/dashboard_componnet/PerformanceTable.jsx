@@ -5,6 +5,7 @@ import Table from '../table_component/Table';
 const PerfomanceTable = () => {
   const perfomanceRef = useRef({})
   const [expand,setExpand] = useState(false)
+  const [currentColor, setCurrentColor] = useState(document.documentElement.style.getPropertyValue('--bg-color1-dark'))
   //not all table needs operation header, so i am using this to filter off operation on my table
   const operation = false
 
@@ -32,21 +33,24 @@ const PerfomanceTable = () => {
 useEffect(()=>{
   if(expand){
       perfomanceRef.current.classList.add('expand')
+      setCurrentColor("#3c3c3c")
+
     }else{
       perfomanceRef.current.classList.remove('expand')
+      setCurrentColor("#2b2b2b")
     }
-})
+},[expand])
 
   return (
-    <div ref={perfomanceRef} className="w-full transition-all bg-white p-4 border rounded-xl">
-        <div className="flex w-full border-b p-2 font-bold text-slate-700">
+    <div ref={perfomanceRef} id="performanceTable" className="w-full dark:border-slate-600 dark:bg-darkmode-1  bg-white p-4 border rounded-xl">
+        <div className="flex w-full border-b dark:text-slate-500 dark:border-b-slate-600 p-2 font-bold dark:text-darkmode-dark text-slate-700">
           <div className="w-[20%]">Perfomance Table</div>
           <div className='w-[60%] flex gap-10 '>
             <div className='flex gap-3 items-center bg-green-200 px-2 flex-grow-0 text-green-600 rounded-xl '>
               <div>Days Left :</div>
               <div>21</div>
             </div>
-            <div className='flex bg-green-600 text-green-200 px-2 rounded-xl gap-3 items-center'>
+            <div className='flex dark:bg-d bg-green-600 text-green-200 px-2 rounded-xl gap-3 items-center'>
               <div>Target :</div>
               <div>90,000,000</div>
             </div>

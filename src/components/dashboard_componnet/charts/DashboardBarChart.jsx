@@ -1,9 +1,27 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { HandleLayoutDesign } from '../../../context/layoutDesignContext';
 
 const DashboardBarChart = () => {
-  const data = [{ name: 'ilasa', amount: 200000 }, { name: 'ilasa', amount: 200000 }];
-  
+  const locations = [
+    "ilasamaja",
+    "mushin",
+    "lagos island",
+    "oshodi",
+    "ojuelegba",
+    "abiodun",
+    "ladipo1",
+    "ladipo2",
+  ];
+  let data = [];
+  for (let i in locations) {
+    const newValue = (parseInt(i) + Math.random()) * 10000; // Calculate value based on index
+    data.push({
+      name: locations[i],
+      value: newValue,
+    });
+  }
+
   const RoundedBar = (props) => {
     const { x, y, width, height } = props;
     const radius = 5; // Adjust the radius for the desired roundness
@@ -17,11 +35,12 @@ const DashboardBarChart = () => {
 
   return (
       <BarChart width={900} height={300} data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-        <CartesianGrid strokeDasharray="3 3" />
+        <CartesianGrid vertical={false} opacity={0.3}  />
         <XAxis dataKey="name" />
-        <YAxis />
+        <YAxis tickCount={6} tickLine={false} axisLine={false} />
         <Tooltip />
-        <Bar shape={<RoundedBar />} dataKey="amount" fill="rgb(22,163,74,1)" />
+        <Legend align="center" verticalAlign="bottom" layout="horizontal" />
+        <Bar shape={<RoundedBar />} dataKey="value" fill="rgb(22,163,74,1)" />
       </BarChart>
   );
 };

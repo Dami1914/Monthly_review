@@ -2,7 +2,12 @@ import React from 'react'
 
 const CreateLoan = () => {
   return (
-    <div>CreateLoan</div>
+    <fieldset>
+      <legend>Create Loan</legend>
+      <form action="">
+        <section></section>
+      </form>
+    </fieldset>
   )
 }
 

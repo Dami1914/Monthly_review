@@ -4,12 +4,14 @@ const DataSubmitContext = createContext({})
 
 const DataSubmitProvider = ({children}) => {
 
-    function handleImageUpload(event,data) {
+    function handleImageUpload(event,setPostingUrl) {
         event.preventDefault();
         const file = event.target.files[0];
         const reader = new FileReader();
         reader.onload = () => {
-          data(reader.result);
+          setPostingUrl(prev=>{
+            return {...prev,["imageUrl"]:reader.result}
+          });
           console.log(reader.result);
         };
         reader.readAsDataURL(file);

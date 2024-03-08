@@ -15,8 +15,9 @@
     background-color: green;
 }
 
-.active {
+li .active {
     color: green;
+    background-color: var(--current-color);
 }
 
 .tooltip::before {
@@ -40,7 +41,9 @@
     opacity: 1;
 }
 
-.changeModeStyle{
-    position: absolute;
-    transform: translateX(calc(100%/20px));
+.btn3{
+    transition-property: transform opacity;
+    transition-duration: 4s;
+    transition-timing-function: ease-in-out;
 }
+

@@ -55,7 +55,6 @@ const Operation = () => {
     <div className="w-full h-full flex">
       <MiniSideMenu data={operationMenuData} />
       <div className="w-[85%] h-full flex flex-col ">
-        <MiniTopMenu />
         <div className="w-full h-[40%] font-bold text-slate-700 flex">
           <div className="w-[50%] flex gap-4 flex-col items-start justify-center relative border-r h-full">
             <div className="absolute top-5 left-5 font-bold text-slate-700">
@@ -66,21 +65,21 @@ const Operation = () => {
                 ref={uploadedRef}
                 accept=".xlsx, .xls"
                 type="file"
-                className="w-full flex  border bg-white border-slate-300 rounded p-2"
+                className="w-full h-[60%] flex items-center border bg-white border-slate-300 rounded p-2"
               />
               <div className="w-full flex gap-4 justify-center">
                 <button
                   onClick={handleFileUpload}
-                  className="p-2 hover:bg-transparent bg-green-300 text-green-600  rounded "
+                  className="btn1 "
                 >
                   Upload
                 </button>
-                <button className="p-2 hover:bg-transparent bg-green-300 text-green-600  rounded ">
+                <button className="btn1 ">
                   Post
                 </button>
                 <button
                   onClick={() => setUploadedData([])}
-                  className="p-2 hover:bg-transparent bg-red-300 text-red-800 rounded "
+                  className="btn2"
                 >
                   Cancel
                 </button>
@@ -89,7 +88,7 @@ const Operation = () => {
           </div>
           <div className="w-[50%] relative h-full flex justify-center items-center">
             <div className="absolute top-5 left-5 font-bold text-slate-700">
-              Post Data
+              Enter Account Numbers
             </div>
             <form className="w-full flex flex-col gap-4">
               <div className="w-full flex flex-col p-3 justify-center gap-5   items-start">
@@ -105,17 +104,17 @@ const Operation = () => {
                 />
               </div>
               <div className="w-full flex gap-5 pl-3">
-                <button className="py-1 px-3 hover:bg-transparent bg-green-300 text-green-600 rounded">
+                <button className="btn1">
                   Post
                 </button>
-                <button className="py-1 px-3 hover:bg-transparent bg-red-300 text-red-800 rounded">
+                <button className="btn2">
                   Cancel
                 </button>
               </div>
             </form>
           </div>
         </div>
-        <div className="w-full border">
+        <div className="w-full dark:border-slate-600 border">
           <Table
             operation={operation}
             tableData={

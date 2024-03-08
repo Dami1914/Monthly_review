@@ -1,25 +1,51 @@
 import React from "react";
 import { useState } from "react";
+import { HandleSubmitDataContext } from "../../../context/dataSubmitContext";
 const CreateMarketer = () => {
-    const [marketerData,setMarketerData] = useState({
-        marketername:"",
-        contact: "",
-        dob:"",
-        gender:"",
-        bankname:"",
-        accountnumber:"",
-        accountname:"",
-        bvn:""
-    })
-    function handleChange(event){
+  const { handleImageUpload, handleChange } = HandleSubmitDataContext();
+  const [imageUrl, setImageUrl] = useState({});
 
-    }
+  const [marketerData, setMarketerData] = useState({
+    marketername: "",
+    contact: "",
+    dob: "",
+    gender: "",
+    bankname: "",
+    accountnumber: "",
+    accountname: "",
+    bvn: "",
+    imageUrl: "",
+  });
+
   return (
     <div className="w-full  p-[2rem]">
       <fieldset className="w-full pt bg-white border rounded-xl h-full">
         <legend className="font-bold text-lg mb-4 ml-3">Create Marketer</legend>
         <form className="w-full p-3 gap-6 flex flex-col ">
-        <div className="w-full rounded-xl bg-green-600 h-[5px]"></div>
+          <div className="w-full rounded-xl bg-green-600 h-[5px]"></div>
+          <section className="w-full flex flex-col justify-center items-center gap-4">
+            <div className="w-[11em] overflow-hidden rounded-[50%] border-green-600 border-2 h-[11em]">
+              {marketerData.imageUrl ? (
+                <img
+                  className="w-full h-full"
+                  src={marketerData.imageUrl}
+                  alt="marketer image"
+                />
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="flex items-center gap-2">
+              <label htmlFor="marketerimage">Marketer Image</label>
+              <input
+                type="file"
+                onChange={(event) => handleImageUpload(event, setMarketerData)}
+                name="imageUrl"
+                id="marketerimage"
+                accept="image/*"
+              />
+            </div>
+          </section>
           <section className="w-full flex rounded p-5 border">
             <div className="flex items-center w-[50%] gap-4">
               <label htmlFor="marketername">Marketer Name</label>
@@ -81,7 +107,7 @@ const CreateMarketer = () => {
                 />
               </div>
             </div>
-            <div className="w-full gap-y-4 flex flex-col bg-slate-50 border rounded-md p-4">
+            <div className="w-full gap-y-4 flex flex-col dark:bg-darkmode-1 dark:border-slate-600 bg-slate-50 border rounded-md p-4">
               <div className="w-full  flex items-center gap-3 justify-between">
                 <label htmlFor="bankname">Bank Name:</label>
                 <input
@@ -130,7 +156,6 @@ const CreateMarketer = () => {
                   name="bvn"
                 />
               </div>
-
             </div>
           </section>
           <section className="w-full border flex gap-3 font-bold rounded p-2">

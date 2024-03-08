@@ -22,7 +22,7 @@ const CreateBranch = () => {
                   id="branchname"
                   name="branchName"
                   placeholder="Add Branch Name"
-                  value={branchData.branchname}
+                  value={branchData.branchName}
                   onChange={(event)=>{handleChange(event,setBranchData)}}
                 />
               </div>
@@ -63,7 +63,7 @@ const CreateBranch = () => {
                 />
               </div>
               <div className=" w-ful flex gap-8 ">
-                <div className="w-full flex items-center justify-between border rounded p-1 ">
+                <div className="w-full flex items-center dark:border-slate-600 justify-between border rounded p-1 ">
                   <label htmlFor="resumptiontime">Resumption Time</label>
                   <input
                     className=""
@@ -74,7 +74,7 @@ const CreateBranch = () => {
                     onChange={(event)=>{handleChange(event,setBranchData)}}
                   />
                 </div>
-                <div className="w-full flex items-center justify-between border rounded p-1 ">
+                <div className="w-full flex items-center dark:border-slate-600 justify-between border rounded p-1 ">
                   <label htmlFor="closingtime">Closing Time</label>
                   <input
                     className=""
