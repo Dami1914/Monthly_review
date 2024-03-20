@@ -1,32 +1,31 @@
-import React from 'react'
-import TableHead from './TableHead'
-import TableRow from './TableRow'
+import React, { useEffect, useRef, useState } from "react";
+import TableHead from "./TableHead";
+import TableRow from "./TableRow";
 
-const Table = ({tableData,operation}) => {
+const Table = ({ tableData, operation }) => {
+
   return (
-    <table style={{'--current-color-':"#1f1b24"}} className="w-full dark:bg-darkmode-1 dark:border-0 dark:text-darkmode-dark bg-white text-slate-600 text-sm">
-        <thead className="border-b dark:border-b-slate-600 dark:border-darkmode-1">
-        <tr>
-            {tableData.map((ele)=>{
-              return <TableHead key={ele} elem={ele}/>
-            })}
-            {
-              operation?
-               <th className="font-normal p-2">Operation</th>
-               :""
-            }
-           
+    <div className="w-full">
+      <div className="w-full bg-white  dark:bg-darkmode-2  h-[40%]">
+        <form className="w-1/2 p-3">
+          <input type="search" className="w-2/3" placeholder="Search ID and Name" />
+        </form>
+      </div>
+      <table className="w-full overflow-scroll  dark:bg-darkmode-2 dark:border-0 dark:text-darkmode-dark  text-slate-600 text-sm">
+        <thead className="border-b bg-white dark:border-b-slate-600 dark:border-darkmode-1">
+          <tr className="">
+            {<TableHead elem={tableData[0]}  />}
+            {operation ? <th className="font-normal  p-2">Operation</th> : ""}
           </tr>
         </thead>
-        <tbody>
-            {tableData.map((ele,index)=>{
-              return (
-              <TableRow operation={operation} key={index} elem={ele}/>
-              )
-            })}
+        <tbody className="">
+          {tableData.map((ele, index) => {
+            return <TableRow operation={operation} index={index}  key={index}  elem={ele} />;
+          })}
         </tbody>
-    </table>
-  )
-}
+      </table>
+    </div>
+  );
+};
 
-export default Table
+export default Table;

@@ -4,14 +4,19 @@ import { LuLayoutDashboard, LuPiggyBank, LuUser } from "react-icons/lu";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { HandleLayoutDesign } from "../../context/layoutDesignContext";
+import { useMemo } from "react";
 const SideMenu = () => {
-  const navigate = useNavigate();
-  const {mode} = HandleLayoutDesign()
+ 
+  const navigate =  useNavigate();
+  const { mode } = HandleLayoutDesign();
   return (
-    <div style={{'--current-color':mode?"#121212":"#F1F5F9"}} className="bg-white overflow-hidden  dark:bg-darkmode-2 w-[18%] h-full  ">
-      <div className="w-full h-[15%] border-r transition-color cubic-bezier(0.99, 1.56, 0.64, 1) duration-75 dark:border-0 flex justify-center items-center p-2">
+    <div
+      style={{ "--current-color": mode ? "#121212" : "#F1F5F9" }}
+      className="bg-white  dark:bg-darkmode-2 w-[15%] h-full  "
+    >
+      <div className="w-full h-[15%]  flex justify-center items-center p-2">
         <div className="w-full  h-[100%] dark:border-slate-600 border-y  gap-3    flex  items-center">
-          <div className="w-[40px] drop-shadow-xl bg-white h-[40px] border rounded-[50%]"></div>
+          <div className="w-[40px] drop-shadow-xl bg-white h-[40px] rounded-[50%]"></div>
           <div className="font-bold   flex drop-shadow-xl flex-col justify-center items-center">
             <div className="flex-shrink">Damilola Jibowu</div>
             <div className="text-sm font-medium ">IT DEPT</div>
@@ -19,9 +24,9 @@ const SideMenu = () => {
           <div></div>
         </div>
       </div>
-      <div className="w-full h-[85%] flex flex-col dark:border-0 justify-between border-r py-5">
+      <div className="w-full h-[85%] pl-2 flex flex-col dark:border-0 justify-between py-5">
         <ul className="w-full flex flex-col gap-3">
-          <li className="flex relative dark:hover:bg-darkmode-1 hover:bg-slate-50  h-[40px]   hover:text-green-600   w-full items-center cursor-pointer">
+          <li className="flex relative    h-[40px]   hover:text-green-600   w-full items-center cursor-pointer">
             <NavLink
               to="dashboard"
               className="w-full peer h-full flex px-5  gap-3 items-center"
@@ -31,9 +36,8 @@ const SideMenu = () => {
               </div>
               <div className="font-bold">Dashboard</div>
             </NavLink>
-            <div className="peer-hover:bg-green-600   left-0  bg-transparent absolute w-[4px] h-[30px] rounded-r-md"></div>
           </li>
-          <li className="flex relative dark:hover:bg-darkmode-1 hover:bg-slate-50 h-[40px]   hover:text-green-600   w-full items-center cursor-pointer">
+          <li className="flex relative   h-[40px]   hover:text-green-600   w-full items-center cursor-pointer">
             <NavLink
               to="admin"
               className="w-full peer h-full flex px-5  gap-3 items-center"
@@ -43,9 +47,8 @@ const SideMenu = () => {
               </div>
               <div className="font-bold">Admin</div>
             </NavLink>
-            <div className="peer-hover:bg-green-600   left-0  bg-transparent absolute w-[4px] h-[30px] rounded-r-md"></div>
           </li>
-          <li className="flex relative dark:hover:bg-darkmode-1 hover:bg-slate-50  h-[40px]   hover:text-green-600   w-full items-center cursor-pointer">
+          <li className="flex relative    h-[40px]   hover:text-green-600   w-full items-center cursor-pointer">
             <NavLink
               to="loan"
               className="w-full px-5 peer h-full flex  gap-3 items-center"
@@ -55,9 +58,8 @@ const SideMenu = () => {
               </div>
               <div className="font-bold">Loan</div>
             </NavLink>
-            <div className="peer-hover:bg-green-600  left-0  bg-transparent absolute w-[4px] h-[30px] rounded-r-md"></div>
           </li>
-          <li className="flex relative dark:hover:bg-darkmode-1 hover:bg-slate-50  h-[40px]   hover:text-green-600   w-full items-center cursor-pointer">
+          <li className="flex relative    h-[40px]   hover:text-green-600   w-full items-center cursor-pointer">
             <NavLink
               to="operation"
               className="w-full peer px-5 h-full flex  gap-3 items-center"
@@ -67,9 +69,8 @@ const SideMenu = () => {
               </div>
               <div className="font-bold">Operation</div>
             </NavLink>
-            <div className="peer-hover:bg-green-600  left-0  bg-transparent absolute w-[4px] h-[30px] rounded-r-md"></div>
           </li>
-          <li className="flex relative dark:hover:bg-darkmode-1 hover:bg-slate-50  h-[40px]   hover:text-green-600   w-full items-center cursor-pointer">
+          <li className="flex relative    h-[40px]   hover:text-green-600   w-full items-center cursor-pointer">
             <NavLink
               to="settings"
               className="w-full peer h-full px-5 flex  gap-3 items-center"
@@ -79,7 +80,6 @@ const SideMenu = () => {
               </div>
               <div className="font-bold">Settings</div>
             </NavLink>
-            <div className="peer-hover:bg-green-600   left-0  bg-transparent absolute w-[4px] h-[30px] rounded-r-md"></div>
           </li>
         </ul>
         <div className="w-full items-center flex flex-col h-[20%] ">

@@ -39,7 +39,7 @@ const RevenueChartArea = () => {
             <stop offset="100%" stopColor="green" stopOpacity={0.05} />
           </linearGradient>
         </defs>
-        <Area dataKey="value" stroke="green" fill="url(#gradient)" />
+        <Area type="monotone" dataKey="value" stroke="green" fill="url(#gradient)" />
         <XAxis dataKey="name" />
         <YAxis tickLine={false} tickCount={8} axisLine={false} tickFormatter={number=>`₦${number}`} />
         <Tooltip />

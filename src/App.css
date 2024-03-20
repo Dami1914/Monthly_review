@@ -11,15 +11,37 @@
     z-index: 3;
 }
 
-.active~div {
+/*.active~div {
     background-color: green;
-}
+}*/
 
 li .active {
     color: green;
     background-color: var(--current-color);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
 }
+li .active::after{
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 0px;
+    bottom: -20px;
+    border-top-right-radius: 20px;
+    box-shadow: 2px -7.5px 0 2px var(--current-color);
 
+}
+li .active::before{
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 0px;
+    top: -20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 2px 7.5px 0 2px var(--current-color);
+}
 .tooltip::before {
     content: var(--tooltips);
     position: absolute;

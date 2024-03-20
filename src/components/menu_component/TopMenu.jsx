@@ -21,7 +21,7 @@ const TopMenu = () => {
   });
   return (
     <div className="w-full hidden lg:flex lg:h-[10%] ">
-      <div className="w-[18%] bg-white  dark:bg-darkmode-2 dark:border-x-0 border-x rounded-tr-3xl p-2  h-full flex justify-start px-3 items-center">
+      <div className="w-[15%] bg-white  dark:bg-darkmode-2 rounded-tr-3xl p-2  h-full flex justify-start px-3 items-center">
         <div className="w-full h-full flex items-center">
           <div className=" w-[74%]">
             <Logo height={"50px"} width={"50px"} />

@@ -16,8 +16,6 @@ import GeneralStateProvider from "./context/generalStateContext";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const { mode } = HandleLayoutDesign();
-  console.log(mode);
   return (
     <DataSubmitProvider>
       <GeneralStateProvider>

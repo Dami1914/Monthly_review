@@ -20,9 +20,9 @@ const CreateBranch = () => {
                   className="w-[60%]"
                   type="text"
                   id="branchname"
-                  name="branchName"
+                  name="Branch Name"
                   placeholder="Add Branch Name"
-                  value={branchData.branchName}
+                  value={branchData["Branch Name"]}
                   onChange={(event)=>{handleChange(event,setBranchData)}}
                 />
               </div>
@@ -33,8 +33,8 @@ const CreateBranch = () => {
                   className=" w-[60%]"
                   type="text"
                   id="branchcontact"
-                  name="branchContact"
-                  value={branchData.branchContact}
+                  name="Branch Contact"
+                  value={branchData["Branch Contact"]}
                   onChange={(event)=>{handleChange(event,setBranchData)}}
                 />
               </div>
@@ -44,9 +44,9 @@ const CreateBranch = () => {
                   className=" w-[60%]"
                   type="text"
                   id="branchemail"
-                  name="branchEmail"
+                  name="Branch Email"
                   placeholder="Add Branch Email"
-                  value={branchData.branchEmail}
+                  value={branchData["Branch Email"]}
                   onChange={(event)=>{handleChange(event,setBranchData)}}
                 />
               </div>
@@ -56,9 +56,9 @@ const CreateBranch = () => {
                   className="w-[60%]"
                   type="text"
                   id="branchaddress"
-                  name="branchAddress"
+                  name="Branch Address"
                   placeholder="Add Branch Address"
-                  value={branchData.branchAddress}
+                  value={branchData["Branch Address"]}
                   onChange={(event)=>{handleChange(event,setBranchData)}}
                 />
               </div>
@@ -69,8 +69,8 @@ const CreateBranch = () => {
                     className=""
                     type="time"
                     id="resumptiontime"
-                    name="resumptionTime"
-                    value={branchData.resumptionTime}
+                    name="Resumption Time"
+                    value={branchData["Resumption Time"]}
                     onChange={(event)=>{handleChange(event,setBranchData)}}
                   />
                 </div>
@@ -80,8 +80,8 @@ const CreateBranch = () => {
                     className=""
                     type="time"
                     id="closingtime"
-                    name="closingTime"
-                    value={branchData.closingTime}
+                    name="Closing Time"
+                    value={branchData["Closing Time"]}
                     onChange={(event)=>{handleChange(event,setBranchData)}}
                   />
                 </div>
@@ -93,10 +93,10 @@ const CreateBranch = () => {
                   Choose Branch Manager
                 </label>
                 <select
-                  name="branchManager"
+                  name="Branch Manager"
                   className=""
                   id="branchmanager"
-                  value={branchData.branchManager}
+                  value={branchData["Branch Manager"]}
                   onChange={(event)=>{handleChange(event,setBranchData)}}
                 >
                   <option value="">--Choose Manager--</option>

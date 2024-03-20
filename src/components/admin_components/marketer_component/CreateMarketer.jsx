@@ -1,51 +1,22 @@
 import React from "react";
 import { useState } from "react";
 import { HandleSubmitDataContext } from "../../../context/dataSubmitContext";
+import ImageUploader from "../../ImageUploader";
 const CreateMarketer = () => {
-  const { handleImageUpload, handleChange } = HandleSubmitDataContext();
+  const { handleImageUpload, handleChange, handleSubmit } = HandleSubmitDataContext();
   const [imageUrl, setImageUrl] = useState({});
-
-  const [marketerData, setMarketerData] = useState({
-    marketername: "",
-    contact: "",
-    dob: "",
-    gender: "",
-    bankname: "",
-    accountnumber: "",
-    accountname: "",
-    bvn: "",
-    imageUrl: "",
-  });
+  const properties = {
+    name: "",
+    id: "",
+  }
+  const [marketerData, setMarketerData] = useState({});
 
   return (
     <div className="w-full  p-[2rem]">
       <fieldset className="w-full pt bg-white border rounded-xl h-full">
         <legend className="font-bold text-lg mb-4 ml-3">Create Marketer</legend>
         <form className="w-full p-3 gap-6 flex flex-col ">
-          <div className="w-full rounded-xl bg-green-600 h-[5px]"></div>
-          <section className="w-full flex flex-col justify-center items-center gap-4">
-            <div className="w-[11em] overflow-hidden rounded-[50%] border-green-600 border-2 h-[11em]">
-              {marketerData.imageUrl ? (
-                <img
-                  className="w-full h-full"
-                  src={marketerData.imageUrl}
-                  alt="marketer image"
-                />
-              ) : (
-                ""
-              )}
-            </div>
-            <div className="flex items-center gap-2">
-              <label htmlFor="marketerimage">Marketer Image</label>
-              <input
-                type="file"
-                onChange={(event) => handleImageUpload(event, setMarketerData)}
-                name="imageUrl"
-                id="marketerimage"
-                accept="image/*"
-              />
-            </div>
-          </section>
+          <ImageUploader properties={properties} setMarketerData={setMarketerData} marketerData={marketerData} handleImageUpload={handleImageUpload}/>
           <section className="w-full flex rounded p-5 border">
             <div className="flex items-center w-[50%] gap-4">
               <label htmlFor="marketername">Marketer Name</label>
@@ -53,9 +24,9 @@ const CreateMarketer = () => {
                 type="text"
                 className="border rounded  outline-green-600 w-[70%] "
                 id="marketername"
-                name="marketername"
-                value={marketerData.marketername}
-                onChange={handleChange}
+                name="Marketer Name"
+                value={marketerData["Marketer Name"]}
+                onChange={(event)=>{handleChange(event,setMarketerData)}}
               />
             </div>
             <div className="flex items-center w-[50%] gap-4">
@@ -64,9 +35,9 @@ const CreateMarketer = () => {
                 type="tel"
                 className="w-full"
                 id="marketercontact"
-                name="marketercontact"
-                value={marketerData.contact}
-                onChange={handleChange}
+                name="Contact"
+                value={marketerData.Contact}
+                onChange={(event)=>{handleChange(event,setMarketerData)}}
               />
             </div>
           </section>
@@ -76,20 +47,21 @@ const CreateMarketer = () => {
                 <label htmlFor="age">DOB</label>
                 <input
                   type="date"
-                  name="dob"
+                  name="Dob"
                   id="dob"
-                  value={marketerData.dob}
-                  onChange={handleChange}
+                  value={marketerData.Dob}
+                  onChange={(event)=>{handleChange(event,setMarketerData)}}
                   className=""
                 />
               </div>
               <div>
                 <label htmlFor=""></label>
                 <select
-                  name="gender"
+                  name="Gender"
                   id="gender"
                   className=""
-                  value={marketerData.gender}
+                  value={marketerData.Gender}
+                  onChange={(event)=>{handleChange(event,setMarketerData)}}
                 >
                   <option value="">---Select Gender---</option>
                   <option value="Male">Male</option>
@@ -100,9 +72,10 @@ const CreateMarketer = () => {
                 <label htmlFor="adrress">Address</label>
                 <input
                   type="text"
-                  name="address"
+                  name="Address"
                   id="address"
-                  value={marketerData.address}
+                  value={marketerData.Address}
+                  onChange={(event)=>{handleChange(event,setMarketerData)}}
                   className="w-full"
                 />
               </div>
@@ -111,55 +84,55 @@ const CreateMarketer = () => {
               <div className="w-full  flex items-center gap-3 justify-between">
                 <label htmlFor="bankname">Bank Name:</label>
                 <input
-                  value={marketerData.bankname}
-                  onChange={handleChange}
+                  value={marketerData["Bank Name"]}
+                  onChange={(event)=>{handleChange(event,setMarketerData)}}
                   className="w-[65%]"
                   type="text"
                   placeholder="Bank Name"
                   id="bankname"
-                  name="bankname"
+                  name="Bank Name"
                 />
               </div>
               <div className="w-full flex items-center gap-3 justify-between">
                 <label htmlFor="accountname">Account Name:</label>
                 <input
-                  value={marketerData.accountname}
-                  onChange={handleChange}
+                  value={marketerData["Account Name"]}
+                  onChange={(event)=>{handleChange(event,setMarketerData)}}
                   className="w-[65%] "
                   type="text"
                   placeholder="Account Name"
                   id="accountname"
-                  name="accountname"
+                  name="Account Name"
                 />
               </div>
               <div className="w-full flex items-center gap-3 justify-between">
                 <label htmlFor="accountnumber">Account Number:</label>
                 <input
-                  value={marketerData.accountnumber}
-                  onChange={handleChange}
+                  value={marketerData["Account Number"]}
+                  onChange={(event)=>{handleChange(event,setMarketerData)}}
                   className="w-[65%] "
                   type="number"
                   placeholder="Account Number"
                   id="accountnumber"
-                  name="accountnumber"
+                  name="Account Number"
                 />
               </div>
               <div className="w-full flex items-center gap-3 justify-between">
                 <label htmlFor="bvn">BVN :</label>
                 <input
-                  value={marketerData.bvn}
-                  onChange={handleChange}
+                  value={marketerData.Bvn}
+                  onChange={(event)=>{handleChange(event,setMarketerData)}}
                   className="w-[65%] "
                   type="number"
                   placeholder="Bvn Number"
                   id="bvnnumber"
-                  name="bvn"
+                  name="Bvn"
                 />
               </div>
             </div>
           </section>
           <section className="w-full border flex gap-3 font-bold rounded p-2">
-            <button className="btn1">Submit</button>
+            <button onClick={(event)=>handleSubmit(event,marketerData)} className="btn1">Submit</button>
             <button className="btn2">Cancel</button>
           </section>
         </form>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { HandleSubmitDataContext } from "../../../context/dataSubmitContext";
 
 const CreateMarket = () => {
-  const {handleChange} = HandleSubmitDataContext()
+  const {handleChange,handleSubmit} = HandleSubmitDataContext()
 
   const [marketData,setMarketData] = useState({})
 
@@ -15,7 +15,7 @@ const CreateMarket = () => {
           <section className="w-full flex flex-col rounded-xl gap-8 dark:bg-darkmode-1 dark:border-slate-600 bg-white justify-between p-4 rounded border">
             <div className="flex gap-4">
               <label htmlFor="">Market Name</label>
-              <input name="Name" value={marketData.Name} onChange={(event)=>{handleChange(event,setMarketData)}} type="text" className="border rounded   outline-green-600 "  />
+              <input name="Market Name" value={marketData["Market Name"]} onChange={(event)=>{handleChange(event,setMarketData)}} type="text" className="border rounded   outline-green-600 "  />
             </div>
             <div className="flex  gap-4">
             <label htmlFor="marketer">Head Marketer</label>
@@ -38,8 +38,8 @@ const CreateMarket = () => {
             </div>
           </section>
           <section className="flex  gap-3 border rounded p-2 font-bold">
-            <button className="p-2 rounded bg-green-400 text-green-800">Submit</button>
-            <button className="p-2 rounded bg-red-400 text-red-800">Cancel</button>
+            <button onClick={(event)=>handleSubmit(event,marketData)} className="btn1">Submit</button>
+            <button className="btn2">Cancel</button>
           </section>
         </form>
       </fieldset>

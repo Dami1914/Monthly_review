@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { HandleSubmitDataContext } from "../../../context/dataSubmitContext";
 
 const CreateUser = () => {
-  const {handleChange,handleImageUpload} = HandleSubmitDataContext()
+  const {handleChange,handleImageUpload,handleSubmit} = HandleSubmitDataContext()
   const [userData, setUserData] = useState({});
 
 
@@ -89,14 +89,13 @@ const CreateUser = () => {
               </div>
               <div className="w-full flex gap-4 p-4 items-center">
                 <label htmlFor="">Position</label>
-              <select name="Position" id="position" className="gap-4">
+              <select value={userData.Position} onChange={(event)=>handleChange(event,setUserData)} name="Position" id="position" className="gap-4">
                 <option value="">--Choose Position--</option>
                 <option value="IT">IT</option>
-                <option value="IT">Teller</option>
+                <option value="Teller">Teller</option>
                 <option value="Loan Officer">Loan Officer</option>
               </select>
               </div>
-              
             </div>
             <div className="w-full flex p-4 gap-4 ">
               <div className="w-full rounded gap-3 flex">
@@ -148,7 +147,7 @@ const CreateUser = () => {
             </div>
           </section>
           <section className="w-full items-center flex gap-4">
-            <button className="btn1">
+            <button className="btn1" onClick={(event)=>handleSubmit(event,userData)}>
               Submit
             </button>
             <button className="btn2">

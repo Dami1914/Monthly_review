@@ -13,7 +13,7 @@ const Loan = () => {
   return (
     <div className='w-full flex h-full'>
         <MiniSideMenu data={data}/>
-        <div className='w-full h-full'>
+        <div className='w-[85%]  h-full'>
             <Routes>
                 <Route index element={<Navigate to="loans"/>}/>
                 <Route path="loans" element={<Loans/>}/>

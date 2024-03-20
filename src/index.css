@@ -13,10 +13,10 @@ button{
     @apply p-1 rounded px-2 text-sm font-bold;
 }
 input{
-    @apply dark:bg-darkmode-2 accent-slate-600 dark:border-slate-600 rounded flex items-center border px-1 h-[1.9rem] indent-2 outline-green-400;
+    @apply dark:bg-darkmode-2 bg-slate-50 accent-slate-600 dark:border-slate-600 rounded flex items-center border px-1 h-[1.9rem] indent-2 outline-slate-400 dark:outline-slate-600;
 }
 select{
-    @apply rounded flex dark:bg-darkmode-2 dark:border-slate-600 border items-center px-2 p-[.5px]  outline-green-400;
+    @apply rounded bg-slate-50 flex dark:bg-darkmode-2 dark:border-slate-600 border items-center px-2 p-[.5px]  outline-green-400;
 }
 .btn2:hover{
     @apply text-red-400 bg-red-800
@@ -41,7 +41,11 @@ section{
 legend{
     @apply dark:text-slate-200
 }
-
+td {
+    white-space: nowrap; /* Prevents text wrapping */
+    overflow: hidden; /* Hides overflowing content */
+    text-overflow: ellipsis; /* Displays ellipsis for truncated text */
+  }
 
 @layer base{
     :root{
@@ -50,11 +54,15 @@ legend{
         --bg-color1-light: #F8FAFC;
         --bg-color2-light: #F1F5F9;
         --text-color-dark: #ced4da;
-        --text-color-light: #475569;
+        --text-color-light: #3a495e;
         --current-color: "";
+        --current-row-color:""
     }
 }
 
+#row:nth-child(2n){
+    background-color: var(--current-row-color) ;
+}
 #moon{
     transition: 0.9s cubic-bezier(0.99, 1.56, 0.64, 1);
     transition-property: transform opacity display;
@@ -81,6 +89,12 @@ legend{
     opacity: 1;
 }
 .activeDashboardButton{
-    color: red;
+    color: var(--text-color-light);
     border:1px solid var(--text-color-light);
+    box-shadow: 0px 0px 15px -9px var(--bg-color2-dark);
+}
+.dashboard-nav-button{
+    transition-property: shadow color;
+    transition-duration: 0.8s;
+    transition-timing-function: cubic-bezier(0.99, 1.56, 0.64, 1);
 }

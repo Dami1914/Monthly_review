@@ -17,7 +17,7 @@ const MiniSideMenu = ({ data }) => {
               >
                 <NavLink
                   to={ele.to}
-                  className="peer w-full cursor-pointer p-2 dark:hover:bg-darkmode-1 hover:text-green-600 hover:bg-slate-100"
+                  className="peer w-full cursor-pointer whitespace-nowrap overflow-hidden text-ellipsis p-2 dark:hover:bg-darkmode-1 hover:text-green-600 hover:bg-slate-100"
                 >
                   {ele.name}
                 </NavLink>

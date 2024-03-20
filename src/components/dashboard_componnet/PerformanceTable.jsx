@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { FaExpand, FaFilter} from "react-icons/fa";
 import { IoMdContract } from "react-icons/io";
 import Table from '../table_component/Table';
+import { HandleLayoutDesign } from '../../context/layoutDesignContext';
 const PerfomanceTable = () => {
   const perfomanceRef = useRef({})
   const [expand,setExpand] = useState(false)
@@ -9,9 +10,7 @@ const PerfomanceTable = () => {
   //not all table needs operation header, so i am using this to filter off operation on my table
   const operation = false
 
-  function handleExpand(){
-    setExpand(prev=>!prev)
-  }
+  const {handleExpand} = HandleLayoutDesign()
 
 
   const tableData = [
@@ -27,22 +26,24 @@ const PerfomanceTable = () => {
       Difference:-40000,
       Percentage: "50%",
       Status: "Poor"
-    }
+    },
+    {
+      "MRKT ID": "001",
+       Market:"Mushin",
+       Markerter:"Ego Nwabali",
+       "Curr Month Trgt":1000000,
+       "Actual Daily RRT":30000,
+       "Avrg Daily RRT":2000,
+       "Actual Returns":500000,
+       MTD:300000,
+       Difference:-40000,
+       Percentage: "50%",
+       Status: false
+     }
   ]
 
-useEffect(()=>{
-  if(expand){
-      perfomanceRef.current.classList.add('expand')
-      setCurrentColor("#3c3c3c")
-
-    }else{
-      perfomanceRef.current.classList.remove('expand')
-      setCurrentColor("#2b2b2b")
-    }
-},[expand])
-
   return (
-    <div ref={perfomanceRef} id="performanceTable" className="w-full dark:border-slate-600 dark:bg-darkmode-1  bg-white p-4 border rounded-xl">
+    <div ref={perfomanceRef} id="performanceTable" className="hover:drop-shadow-lg w-full  dark:bg-darkmode-1 h-full  bg-white p-4 dark:border-slate-600 border rounded-xl">
         <div className="flex w-full border-b dark:text-slate-500 dark:border-b-slate-600 p-2 font-bold dark:text-darkmode-dark text-slate-700">
           <div className="w-[20%]">Perfomance Table</div>
           <div className='w-[60%] flex gap-10 '>
@@ -69,7 +70,7 @@ useEffect(()=>{
             <div className='cursor-pointer relative'>
               <div  className='peer border border-slate-300 p-2 rounded-lg'>
                  {
-                  expand? <IoMdContract className='text-lg' onClick={handleExpand}/>: <FaExpand onClick={handleExpand}/>
+                  expand? <IoMdContract className='text-lg' onClick={()=>{handleExpand(perfomanceRef,setExpand,expand)}}/>: <FaExpand onClick={()=>{handleExpand(perfomanceRef,setExpand,expand)}}/>
                  }
               </div>
               <div className='transition-all absolute peer-hover:text-slate-700 peer-hover:bg-white peer-hover:flex top-15 -left-20 text-transparent p-2 rounded-xl drop-shadow-xl '>click to expand</div>
